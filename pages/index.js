@@ -11,11 +11,14 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" lg:space-y-10 mt-10 no-scrollbar">
-        <h1 className="font-serif text-3xl lg:text-4xl font-semibold mb-10 tracking-wider text-center ">
+        <h1 className="font-serif text-3xl lg:text-4xl font-semibold mb-2 tracking-wider text-center ">
           Image Gallery
         </h1>
+        <div className="sticky top-0 z-50 bg-white  py-5">
+
         <Search />
         <QuickSearch />
+        </div>
        
           <Gallery />
    
