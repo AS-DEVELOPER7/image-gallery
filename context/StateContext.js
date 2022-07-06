@@ -9,28 +9,43 @@ const StateContext = ({ children }) => {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState();
   const [type, setType] = useState("");
-  const searchData = useGetSearchedImagesQuery(type);
-  const { data, allImagesIsLoading } = useGetAllImagesQuery();
+  const [page, setPage] = useState(1);
+  const typeRef = useRef();
+  const searchData = useGetSearchedImagesQuery(type, page);
+  const { data, allImagesIsLoading } = useGetAllImagesQuery(page);
+  console.log(searchData);
+
   useEffect(() => {
     if (type === "") {
       setImages(data);
       setIsLoading(allImagesIsLoading);
     } else {
-      setImages(searchData?.data.results);
+      setImages(searchData?.data?.results);
       setIsLoading(searchData.isLoading);
     }
     console.log(images);
   });
   // search Function   //
-  const typeRef = useRef();
   const search = (e) => {
     e.preventDefault();
 
     setType(typeRef.current.value);
+    setPage(1);
   };
 
   return (
-    <Context.Provider value={{ images, typeRef, search, isLoading, setType ,type}}>
+    <Context.Provider
+      value={{
+        images,
+        typeRef,
+        search,
+        isLoading,
+        setType,
+        type,
+        page,
+        setPage,
+      }}
+    >
       {children}
     </Context.Provider>
   );
