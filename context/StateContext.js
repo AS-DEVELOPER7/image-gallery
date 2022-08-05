@@ -13,7 +13,6 @@ const StateContext = ({ children }) => {
   const typeRef = useRef();
   const searchData = useGetSearchedImagesQuery(type, page);
   const { data, allImagesIsLoading } = useGetAllImagesQuery(page);
-  console.log(searchData);
 
   useEffect(() => {
     if (type === "") {
