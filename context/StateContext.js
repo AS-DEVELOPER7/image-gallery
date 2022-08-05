@@ -22,7 +22,6 @@ const StateContext = ({ children }) => {
       setImages(searchData?.data?.results);
       setIsLoading(searchData.isLoading);
     }
-    console.log(images);
   });
   // search Function   //
   const search = (e) => {
